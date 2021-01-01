@@ -1,12 +1,16 @@
+'''
+
+author:Nirmith Victor D'Almeida
+instagram: 
+
+'''
+
 #this is a hangman game 
 
 import random
 import os
 
 #clear the screen if feel necessary
-def clear():
-    os.system("clear")
-
 
 #display hanging device
 def print_hangman(values):
@@ -27,7 +31,7 @@ def print_hangman(values):
 def print_hangman_win():
     print()
     print("\t +--------+")
-    print("\t         | |")
+    print("\t |       | |")
  
     print("\t         | |")
     print("\t O       | |")
@@ -55,7 +59,7 @@ def check_win(values):
 # Function for each hangman game
 def hangman_game(word):
  
-    clear()
+ 
  
     # Stores the letters to be displayed
     word_display = []
@@ -97,19 +101,18 @@ def hangman_game(word):
         # Accepting player input
         inp = input("Enter a character = ")
         if len(inp) != 1:
-            clear()
+            
             print("Wrong choice!! Try Again")
             continue
  
         # Checking whether it is a alphabet
         if not inp[0].isalpha():
-            clear()
+            
             print("Wrong choice!! Try Again")
             continue
  
         # Checking if it already tried before   
         if inp.upper() in incorrect:
-            clear()
             print("Already tried!!")
             continue   
  
@@ -126,7 +129,7 @@ def hangman_game(word):
             # Checking if the player lost
             if chances == len(hangman_values):
                 print()
-                clear()
+                
                 print("\tGAME OVER!!!")
                 print_hangman(hangman_values)
                 print("The word is :", word.upper())
@@ -142,17 +145,16 @@ def hangman_game(word):
  
             # Checking if the player won        
             if check_win(word_display):
-                clear()
+                
                 print("\tCongratulations! ")
                 print_hangman_win()
                 print("The word is :", word.upper())
                 break
-        clear() 
+     
      
  
 if __name__ == "__main__":
  
-    clear()
  
     # Types of categories
     topics = {1: "DC characters", 2:"Marvel characters", 3:"Anime characters"}
@@ -171,22 +173,18 @@ if __name__ == "__main__":
         print("-----------------------------------------")
         print("\t\tGAME MENU")
         print("-----------------------------------------")
-        for key in topics:
-            print("Press", key, "to select", topics[key])
+        for key,value in topics.items():
+            print("Press", key, "to select", value)
         print("Press", len(topics)+1, "to quit")    
         print()
          
         # Handling the player category choice
-        try:
-            choice = int(input("Enter your choice = "))
-        except ValueError:
-            clear()
-            print("Wrong choice!!! Try again")
-            continue
+        choice = int(input("Enter your choice = "))
+   
  
         # Sanity checks for input
-        if choice > len(topics)+1:
-            clear()
+        if choice > len(topics)+1 or choice<1:
+         
             print("No such topic!!! Try again.")
             continue   
  
